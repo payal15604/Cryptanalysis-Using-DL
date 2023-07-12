@@ -20,7 +20,7 @@ jobs:
 
       - name: Build code
         run: |
-          gcc -o main main.c
+          gcc -o main grain_c_with headerfile.c
 
       - name: Run code
         run: |
