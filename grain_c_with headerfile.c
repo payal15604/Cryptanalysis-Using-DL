@@ -184,7 +184,7 @@ void printData(int *key, int *IV, int *ks, int *pt, int *et, int *dt, int sizeOf
 	for (i=0;i<sizeOfPlaintext;i++) printf("%02x",(int)dt[i]);
 }
  
-int main(int argc, char **argv) {
+/* int main(int argc, char **argv) {
  
 	int plaintext[10]={0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01};
 	int plaintext2[512]; //fill this to encrypt
@@ -235,5 +235,47 @@ int main(int argc, char **argv) {
  
 	printf("\n");
  
-	return 0;
+	return 0;}
+
+ 
+	*/
+int main(int argc, char **argv) {
+    int plaintext[10] = {0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01};
+    int plaintext2[512]; // fill this to encrypt
+    int sizeOfPlaintext = 10; // fill size here
+    int encrypted_text[10];
+    int decrypted_text[10];
+
+    grain mygrain;
+    int keys[3][10] = {
+        {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
+        {0x01,0x23,0x45,0x67,0x89,0xab,0xcd,0xef,0x12,0x34},
+        {0x80,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}
+    };
+    int ivs[3][8] = {
+        {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
+        {0x01,0x23,0x45,0x67,0x89,0xab,0xcd,0xef},
+        {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}
+    };
+    int *current_key;
+    int *current_iv;
+
+    for (int test_case = 0; test_case < 3; ++test_case) {
+        printf("\nTestCase: %d\n", test_case + 1);
+        current_key = keys[test_case];
+        current_iv = ivs[test_case];
+
+        keysetup(&mygrain, current_key, 80, 64);
+        ivsetup(&mygrain, current_iv);
+        keystream_bytes(&mygrain, ks, 10);
+        grain mygrain2 = mygrain;
+        encrypt_bytes(&mygrain, plaintext, encrypted_text, 10);
+        decrypt_bytes(&mygrain2, encrypted_text, decrypted_text, 10);
+        printData(current_key, current_iv, ks, plaintext, encrypted_text, decrypted_text, 10);
+    }
+
+    printf("\n");
+
+    return 0;
 }
+
