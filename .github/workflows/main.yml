@@ -1,0 +1,27 @@
+name: Build and Run C Code
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up GCC
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Build code
+        run: |
+          gcc -o main main.c
+
+      - name: Run code
+        run: |
+          ./main
