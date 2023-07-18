@@ -5,6 +5,8 @@ Will be using a different approach to continue the same
 #Update2
 Will try using C Language and import the grain module (not available as an open source) using GitHub Repos
 
+#Update3 
+Working on Issue 2
 
 The Grain Cipher Implementation involves the encryption of data using functions of Linear Feedback Shift Registers.
 It has two shift registers, LFSR and NFSR. 
