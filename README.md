@@ -22,3 +22,14 @@ Each element in the key1 array corresponds to one byte (8 bits) of the key.
 The key (key1 array) remains constant for all the iterations of the loop. Only the IVs are randomly generated for each iteration, and the corresponding keystream is computed based on that constant key and the generated IVs.
 
 Since the key is the same (key1 array), the keystreams generated for different IVs will be different, allowing you to collect 10,000 unique IVs and their corresponding keystreams in the IV and keystream2 arrays, respectively. These values are then stored in the CSV file (data.csv) using the transferDataToCSV function.
+
+#What is Hexadecimal Representaion
+
+The representation 0x01 is a way to denote a hexadecimal value in C programming language. In C, a number preceded by 0x indicates that it is in hexadecimal format.
+
+In this context:
+
+0x01 represents the hexadecimal value 01, which is equal to the decimal value 1.
+0x23 represents the hexadecimal value 23, which is equal to the decimal value 35.
+0x45 represents the hexadecimal value 45, which is equal to the decimal value 69.
+... and so on.
