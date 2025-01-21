@@ -1,35 +1,53 @@
-#Update
-Used AI Tools to rectify the issues faced initially in the code. 
-Will be using a different approach to continue the same
+# Cryptanalysis Using Deep Learning
 
-#Update2
-Will try using C Language and import the grain module (not available as an open source) using GitHub Repos
+This project explores the cryptanalysis of the Grain Cipher using deep learning methods. The Grain Cipher utilizes Linear Feedback Shift Registers (LFSRs) and Non-linear Feedback Shift Registers (NFSRs) for encryption. The primary focus is on generating keystreams corresponding to initialization vectors (IVs), a constant key, and plaintext inputs.
 
-#Update3 
-Working on Issue 2
+**Key Highlights**
 
-The Grain Cipher Implementation involves the encryption of data using functions of Linear Feedback Shift Registers.
-It has two shift registers, LFSR and NFSR. 
-It will focus on generating a keystream corresponding to the given initialization vector, key, and plain text.
+* **Updates:**
+    * **Initial Approach:** Encountered challenges in the initial code; leveraged AI tools to identify and rectify issues.
+    * **Revised Strategy:** Transitioned to C language, importing the Grain module from GitHub repositories (as it is not openly available).
+    * **Current Focus:** Actively working on resolving Issue 2 in the implementation.
 
-#OUTLINE of the Key Stream
-The key represented by the key1 array in hex format is:
+**Grain Cipher Overview**
 
-01 23 45 67 89 AB CD EF 12 34 --> This is the constant key in hex form. 
+The Grain Cipher encrypts data by generating keystreams using two key components:
 
-Each element in the key1 array corresponds to one byte (8 bits) of the key. 
+* **Linear Feedback Shift Register (LFSR):** Generates predictable sequences based on linear operations.
+* **Non-linear Feedback Shift Register (NFSR):** Introduces non-linearity for added security.
 
-The key (key1 array) remains constant for all the iterations of the loop. Only the IVs are randomly generated for each iteration, and the corresponding keystream is computed based on that constant key and the generated IVs.
+The implementation aims to:
 
-Since the key is the same (key1 array), the keystreams generated for different IVs will be different, allowing you to collect 10,000 unique IVs and their corresponding keystreams in the IV and keystream2 arrays, respectively. These values are then stored in the CSV file (data.csv) using the transferDataToCSV function.
+* Generate keystreams for a given key and randomly generated IVs.
+* Store keystreams and corresponding IVs in a structured format for analysis.
 
-#What is Hexadecimal Representaion
+**Keystream Outline**
 
-The representation 0x01 is a way to denote a hexadecimal value in C programming language. In C, a number preceded by 0x indicates that it is in hexadecimal format.
+**Key Details**
 
-In this context:
+The key, represented by the key1 array in hexadecimal format, is as follows:
 
-0x01 represents the hexadecimal value 01, which is equal to the decimal value 1.
-0x23 represents the hexadecimal value 23, which is equal to the decimal value 35.
-0x45 represents the hexadecimal value 45, which is equal to the decimal value 69.
-... and so on.
+```c
+01 23 45 67 89 AB CD EF 12 34
+```
+
+Each element in the key1 array represents a byte (8 bits) of the key. The key remains constant across iterations.
+
+**IV and Keystream Generation**
+
+* IVs are randomly generated for each iteration.
+* The keystreams are computed based on the constant key and generated IVs.
+* A total of 10,000 unique IV-keystream pairs are stored in a CSV file (data.csv) using the `transferDataToCSV` function.
+
+**Hexadecimal Representation**
+
+In this implementation, hexadecimal values are used extensively. The representation format `0xXX` indicates hexadecimal values in C programming.
+
+**Examples:**
+
+* `0x01`: Hexadecimal value 01 (decimal: 1).
+* `0x23`: Hexadecimal value 23 (decimal: 35).
+* `0x45`: Hexadecimal value 45 (decimal: 69).
+
+
+
