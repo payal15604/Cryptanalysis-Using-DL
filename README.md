@@ -5,9 +5,8 @@ This project explores the cryptanalysis of the Grain Cipher using deep learning 
 **Key Highlights**
 
 * **Updates:**
-    * **Initial Approach:** Encountered challenges in the initial code; leveraged AI tools to identify and rectify issues.
+    * **Initial Approach:** Encountered challenges in the initial code
     * **Revised Strategy:** Transitioned to C language, importing the Grain module from GitHub repositories (as it is not openly available).
-    * **Current Focus:** Actively working on resolving Issue 2 in the implementation.
 
 **Grain Cipher Overview**
 
